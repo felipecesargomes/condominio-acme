@@ -1,6 +1,6 @@
 # condominio-acme
-Aluno: Felipe César <br/>
-Professor: Carlos Barbosa
+<b>Aluno:</b> Felipe César <br/>
+<b>Professor:</b> Carlos Barbosa
 
 Projeto para a disciplina Java Web II - Prof. Carlos Barbosa - Requisições Verbos HTTP utilizando relacionamentos @OneToMany
 
