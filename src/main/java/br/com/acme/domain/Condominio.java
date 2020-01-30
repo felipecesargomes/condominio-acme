@@ -1,11 +1,10 @@
 /**
  * 
  */
-package br.com.acme.responsavel;
+package br.com.acme.domain;
 
 import java.io.Serializable;
 import java.util.Set;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,10 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import br.com.acme.reclamacao.Reclamacao;
-import br.com.acme.reserva.Reserva;
-import lombok.Builder;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -28,14 +24,13 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@Builder
 @EqualsAndHashCode
-@Table(name = "tb_responsavel")
-public class Responsavel implements Serializable {
+@Table(name = "tb_condominio")
+public class Condominio implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	private String nome;
@@ -44,9 +39,12 @@ public class Responsavel implements Serializable {
 	
 	private String telefone;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "responsavelReserva")
-	private Set<Reserva> reservas;
+	@JsonIgnore
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "condominoMulta")
+	private Set<Multa> multasAplicadas;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "responsavelReclamacao")
-	private Set<Reclamacao> reclamacoes;
+	@JsonIgnore
+	@OneToMany
+	private Set<Aviso> avisos;
+	
 }

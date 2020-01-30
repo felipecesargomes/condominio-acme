@@ -1,20 +1,16 @@
 /**
  * 
  */
-package br.com.acme.reclamacao;
+package br.com.acme.model.naoutilizados;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import br.com.acme.responsavel.Responsavel;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -29,19 +25,15 @@ import lombok.Setter;
 @Setter
 @Builder
 @EqualsAndHashCode
-@Table(name = "tb_reclamacao")
-public class Reclamacao  implements Serializable{
+@Table(name = "tb_area_comum")
+public class AreaComum implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	private String descricaoReclamacao;
+	private Integer codigo;
 	
-	private LocalDate dataReclamacao;
-	
-	@ManyToOne
-	@JoinColumn(name = "id_responsavel")
-	private Responsavel responsavelReclamacao;
+	private String descricao;
 }
